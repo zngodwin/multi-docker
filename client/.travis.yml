@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t zgodwin1/reatc-test -f ./client/Dockerfile.dev ./client
+  - docker build -t zgodwin1/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run zgodwin1/react-test npm test -- --coverage
@@ -19,4 +19,4 @@ after_success:
   - docker push zgodwin1/multi-client
   - docker push zgodwin1/multi-nginx
   - docker push zgodwin1/multi-server
-  - docker push zgodwin1/multi-worker
+  - docker push zgodwin1/multi
