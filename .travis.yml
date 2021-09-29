@@ -19,4 +19,4 @@ after_success:
   - docker push zgodwin1/multi-client
   - docker push zgodwin1/multi-nginx
   - docker push zgodwin1/multi-server
-  - docker push zgodwin1/multi
+  - docker push zgodwin1/multi-worker
