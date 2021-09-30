@@ -1,5 +1,7 @@
-sudo: required 
-services: 
+sudo: required
+language: generic
+
+services:
   - docker
 
 before_install:
@@ -13,10 +15,22 @@ after_success:
   - docker build -t zgodwin1/multi-nginx ./nginx
   - docker build -t zgodwin1/multi-server ./server
   - docker build -t zgodwin1/multi-worker ./worker
-  #Log in to the docker CLI
+  # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  #Take thoes images and push to docker hub
+  # Take those images and push them to docker hub
   - docker push zgodwin1/multi-client
   - docker push zgodwin1/multi-nginx
   - docker push zgodwin1/multi-server
   - docker push zgodwin1/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'multi-docker'
+  env: 'MultiDocker-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-923445559289'
+  bucket_path: 'docker-multi'
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

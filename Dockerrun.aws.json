@@ -1,0 +1,35 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "zgodwin1/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "zgodwin1/multi-client",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "zgodwin1/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "zgodwin1/multi-nginx",
+            "essential": true,
+            "portMappings":[
+                {
+                    "hosPort": 80, 
+                    "containerPort": 80
+                }
+            ]
+
+        }
+    ]
+}
