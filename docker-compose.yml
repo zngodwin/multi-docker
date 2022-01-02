@@ -1,31 +1,51 @@
-version: "3"
+version: '3'
 services:
-  client:
-    image: "zgodwin1/multi-client"
-    mem_limit: 128m
-    hostname: client
-  server:
-    image: "zgodwin1/multi-server"
-    mem_limit: 128m 
-    hostname: api
+  postgres:
+    image: 'postgres:latest'
     environment:
-      - REDIS_HOST=$REDIS_HOST
-      - REDIS_PORT=$REDIS_PORT
-      - PGUSER=$PGUSER
-      - PGHOST=$PGHOST
-      - PGDATABASE=$PGDATABASE
-      - PGPASSWORD=$PGPASSWORD
-      - PGPORT=$PGPORT
-  worker:
-    image: "zgodwin1/multi-worker"
-    mem_limit: 128m
-    hostname: worker
-    environment:
-      - REDIS_HOST=$REDIS_HOST
-      - REDIS_PORT=$REDIS_PORT
+      - POSTGRES_PASSWORD=postgres_password
+  redis:
+    image: 'redis:latest'
   nginx:
-    image: "zgodwin1/multi-nginx"
-    mem_limit: 128m
-    hostname: nginx
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
     ports:
-      - "80:80"
+      - '3050:80'
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+  client:
+    stdin_open: true
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+  worker:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./worker
+    volumes:
+      - /app/node_modules
+      - ./worker:/app
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
