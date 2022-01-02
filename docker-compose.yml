@@ -1,12 +1,12 @@
 version: "3"
 services:
   client:
-    image: "cygnetops/multi-client-10-14"
+    image: "zgodwin1/multi-client"
     mem_limit: 128m
     hostname: client
   server:
-    image: "cygnetops/multi-server-10-14"
-    mem_limit: 128m
+    image: "zgodwin1/multi-server"
+    mem_limit: 128m 
     hostname: api
     environment:
       - REDIS_HOST=$REDIS_HOST
@@ -17,14 +17,14 @@ services:
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
   worker:
-    image: "cygnetops/multi-worker-10-14"
+    image: "zgodwin1/multi-worker"
     mem_limit: 128m
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
-    image: "cygnetops/multi-nginx-10-14"
+    image: "zgodwin1/multi-nginx"
     mem_limit: 128m
     hostname: nginx
     ports:
