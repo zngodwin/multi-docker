@@ -15,7 +15,7 @@ services:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
-      - '3050:80'
+      - '8080:80'
   api:
     build:
       dockerfile: Dockerfile.dev
@@ -49,3 +49,12 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: postgres_password
+    ports:
+      - "5050:80"

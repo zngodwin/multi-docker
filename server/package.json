@@ -1,14 +1,22 @@
 {
   "dependencies": {
-    "express": "4.16.3",
-    "pg": "8.0.3",
-    "redis": "2.8.0",
+    "body-parser": "*",
     "cors": "2.8.4",
+    "express": "4.16.3",
+    "fast-csv": "^4.3.6",
     "nodemon": "1.18.3",
-    "body-parser": "*"
+    "pg": "^8.0.3",
+    "redis": "2.8.0"
   },
   "scripts": {
     "dev": "nodemon",
     "start": "node index.js"
-  }
+  },
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

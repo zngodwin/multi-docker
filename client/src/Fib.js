@@ -5,7 +5,8 @@ class Fib extends Component {
   state = {
     seenIndexes: [],
     values: {},
-    index: '',
+    index: ' f(x) = f(x) - 1 + f(x) - 2',
+    term: ''
   };
 
   componentDidMount() {
@@ -25,11 +26,21 @@ class Fib extends Component {
     });
   }
 
+  onInputChange = (event) => {
+    this.setState({ index: event.target.value });
+    //will wire this up later
+    this.setState({ term: event.target.value });
+    //console.log(this.state.term);
+  };
+
   handleSubmit = async (event) => {
     event.preventDefault();
+    this.setState({term: this.state.term});
+    console.log(this.state.term);
 
     await axios.post('/api/values', {
-      index: this.state.index,
+      index: this.state.index, 
+      //term: this.state.term
     });
     this.setState({ index: '' });
   };
@@ -48,20 +59,23 @@ class Fib extends Component {
         </div>
       );
     }
-
+   
     return entries;
   }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>Enter your index:</label>
-          <input
-            value={this.state.index}
-            onChange={(event) => this.setState({ index: event.target.value })}
-          />
-          <button>Submit</button>
+        <form onSubmit={this.handleSubmit} className ='ui form'>
+          <div className='field'>
+            <label>Enter your index: </label>
+            <input
+              value={this.state.index}
+              onChange={this.onInputChange}
+            
+            />
+            <button>Submit</button>
+          </div>
         </form>
 
         <h3>Indexes I have seen:</h3>

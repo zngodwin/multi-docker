@@ -5,6 +5,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -21,9 +22,28 @@ const pgClient = new Pool({
 
 pgClient.on("connect", (client) => {
   client
-    .query("CREATE TABLE IF NOT EXISTS values (number INT)")
+    .query("CREATE TABLE IF NOT EXISTS values (number INTEGER)")
     .catch((err) => console.error(err));
 });
+
+const query = "CREATE TABLE IF NOT EXISTS words (id INTEGER, acronym VARCHAR, definition TEXT)"
+
+pgClient.connect((err, client, done) => {
+  if (err) throw err;
+  client.query(query, (err, res) => {
+    done();
+    if (err){
+      console.log(err.stack);
+    } else {
+      for (let row of res.rows) {
+        console.log(row);
+      }
+    }
+  });
+});
+
+//import data into postgres 
+const dataimport = require('./dataimport');
 
 // Redis Client Setup
 const redis = require("redis");
