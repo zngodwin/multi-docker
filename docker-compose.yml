@@ -49,3 +49,12 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: postgres_password
+    ports:
+      - "5050:80"

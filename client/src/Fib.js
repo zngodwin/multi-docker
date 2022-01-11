@@ -9,7 +9,6 @@ class Fib extends Component {
     term: ''
   };
 
-
   componentDidMount() {
     this.fetchValues();
     this.fetchIndexes();
@@ -28,18 +27,20 @@ class Fib extends Component {
   }
 
   onInputChange = (event) => {
-    this.setState({ index: event.target.value })
+    this.setState({ index: event.target.value });
     //will wire this up later
-    this.setState({ term: event.target.value })
-    console.log(this.state.term);
+    this.setState({ term: event.target.value });
+    //console.log(this.state.term);
   };
 
   handleSubmit = async (event) => {
-    //event.preventDefault();
-    this.setState({term: this.state.term})
+    event.preventDefault();
+    this.setState({term: this.state.term});
+    console.log(this.state.term);
 
     await axios.post('/api/values', {
-      index: this.state.index,
+      index: this.state.index, 
+      //term: this.state.term
     });
     this.setState({ index: '' });
   };
@@ -58,7 +59,7 @@ class Fib extends Component {
         </div>
       );
     }
-
+   
     return entries;
   }
 
