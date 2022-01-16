@@ -4,7 +4,7 @@ const { Pool } = require("pg");
 const fastcsv = require("fast-csv");
 const keys = require("./keys");
 
-let stream = fs.createReadStream("test.csv");
+let stream = fs.createReadStream("data.csv");
 let csvData = [];
 let csvStream = fastcsv
 .parse()
@@ -26,7 +26,7 @@ const pgClient = new Pool({
 });
 
 const query =
-    "INSERT INTO words (id, acronym, definition) VALUES ($1, $2, $3)";
+    "INSERT INTO terms (id, acronym, definition) VALUES ($1, $2, $3)";
 
 pgClient.connect((err, client, done) => {
     if (err) throw err;
@@ -48,4 +48,4 @@ pgClient.connect((err, client, done) => {
 });
 
 stream.pipe(csvStream);
-console.log('import data success... i hope ');
+console.log('loading data ');

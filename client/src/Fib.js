@@ -5,13 +5,14 @@ class Fib extends Component {
   state = {
     seenIndexes: [],
     values: {},
-    index: ' f(x) = f(x) - 1 + f(x) - 2',
+    index: '',
     term: ''
   };
 
   componentDidMount() {
     this.fetchValues();
     this.fetchIndexes();
+    //this.fetchTerm();
   }
 
   async fetchValues() {
@@ -25,30 +26,58 @@ class Fib extends Component {
       seenIndexes: seenIndexes.data,
     });
   }
+  //will change DNS to this.state.term later
+  async fetchTerm(index) {
+    const term = await axios.get('/api/terms/all', {
+      params: {
+        term: index
+      }
+    });
+    console.log('send', index);
+    console.log('received', term.data);
+    this.setState({ term: term.data });
 
-  onInputChange = (event) => {
-    this.setState({ index: event.target.value });
-    //will wire this up later
-    this.setState({ term: event.target.value });
-    //console.log(this.state.term);
   };
+  
+  onInputChange = (event) => {
+    event.preventDefault();
+    this.setState({ index: event.target.value });
+    this.setState({ term: event.target.value });
+    //console.log(this.state.index);
+  }; 
 
   handleSubmit = async (event) => {
+    //DO NOT REMOVE event.preventDefault or wont work
     event.preventDefault();
-    this.setState({term: this.state.term});
-    console.log(this.state.term);
-
+    this.fetchTerm(this.state.index);
+    
     await axios.post('/api/values', {
       index: this.state.index, 
-      //term: this.state.term
-    });
-    this.setState({ index: '' });
+    })
   };
 
+  renderTerm(){
+    
+    try{
+      if(typeof this.state.term === 'object'){
+        console.log(this.state.term[0].acronym);
+        return <div> {this.state.term[0].acronym} : {this.state.term[0].definition}</div>
+      } else 
+      {
+        //pass 
+      }
+    }
+    catch(err){
+      console.log(err);
+    }
+    return ['hello'];
+  
+  }
+  
   renderSeenIndexes() {
     return this.state.seenIndexes.map(({ number }) => number).join(', ');
   }
-
+  
   renderValues() {
     const entries = [];
 
@@ -62,17 +91,16 @@ class Fib extends Component {
    
     return entries;
   }
-
+  
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit} className ='ui form'>
           <div className='field'>
-            <label>Enter your index: </label>
+            <label>Enter your word: </label>
             <input
               value={this.state.index}
               onChange={this.onInputChange}
-            
             />
             <button>Submit</button>
           </div>
@@ -83,6 +111,10 @@ class Fib extends Component {
 
         <h3>Calculated Values:</h3>
         {this.renderValues()}
+
+        <h3>Acronym Lookup</h3>
+        {this.renderTerm()}
+      
       </div>
     );
   }
