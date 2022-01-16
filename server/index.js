@@ -88,12 +88,10 @@ const dataimport = require('./dataimport');
 
 app.get("/terms/all", async (req, res) => {
   let param = req.query.term;
-  //const terms = await pgClient.query("SELECT acronym, definition FROM terms WHERE acronym=$1", [param]);
-  const terms = await pgClient.query("SELECT acronym, definition FROM terms WHERE acronym=$1", [param]);
+  const terms = await pgClient.query("SELECT acronym, definition FROM terms WHERE acronym ~* $1", [param]);
 
   /*
   sql = "SELECT acronym, definition FROM terms WHERE acronym = $1";
-  
   const terms = await pgClient.query((sql, param),
     (err, res) => {
       if (err){
@@ -107,7 +105,7 @@ app.get("/terms/all", async (req, res) => {
     */
     console.log("received", param);
    
-    console.log(terms);
+    //console.log(terms);
     res.send(terms.rows);
   }
 );

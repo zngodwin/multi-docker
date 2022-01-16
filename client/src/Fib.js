@@ -34,10 +34,9 @@ class Fib extends Component {
       }
     });
     console.log('send', index);
-    
-    console.log(term.request);
     console.log('received', term.data);
-    return term.data
+    this.setState({ term: term.data });
+
   };
   
   onInputChange = (event) => {
@@ -56,7 +55,24 @@ class Fib extends Component {
       index: this.state.index, 
     })
   };
+
+  renderTerm(){
+    
+    try{
+      if(typeof this.state.term === 'object'){
+        console.log(this.state.term[0].acronym);
+        return <div> {this.state.term[0].acronym} : {this.state.term[0].definition}</div>
+      } else 
+      {
+        //pass 
+      }
+    }
+    catch(err){
+      console.log(err);
+    }
+    return ['hello'];
   
+  }
   
   renderSeenIndexes() {
     return this.state.seenIndexes.map(({ number }) => number).join(', ');
@@ -81,7 +97,7 @@ class Fib extends Component {
       <div>
         <form onSubmit={this.handleSubmit} className ='ui form'>
           <div className='field'>
-            <label>Enter your index or word: </label>
+            <label>Enter your word: </label>
             <input
               value={this.state.index}
               onChange={this.onInputChange}
@@ -97,6 +113,8 @@ class Fib extends Component {
         {this.renderValues()}
 
         <h3>Acronym Lookup</h3>
+        {this.renderTerm()}
+      
       </div>
     );
   }
