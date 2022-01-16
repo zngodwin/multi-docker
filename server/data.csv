@@ -1,2 +1,3 @@
 id ,acrovym ,definition
 1,BGP,Border Gateway Protocol (BGP) is a standardized exterior gateway protocol designed to exchange routing and reachability information between autonomous systems (AS) on the Internet
+2,DNS,"Domanin Name Server - hierarchical and decentralized naming system used to identify computers, services, and other resources reachable through the Internet "

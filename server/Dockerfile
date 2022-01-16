@@ -1,7 +1,8 @@
 FROM node:14.14.0-alpine
 WORKDIR "/app"
 COPY ./package.json ./
-COPY ./test.csv ./
+COPY ./data.csv ./
+COPY ./dataimport.js ./
 RUN npm install
 RUN npm i fast-csv
 COPY . .

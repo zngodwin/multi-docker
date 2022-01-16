@@ -55,6 +55,6 @@ services:
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: postgres@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: postgres_password
+      PGADMIN_DEFAULT_PASSWORD: password
     ports:
       - "5050:80"

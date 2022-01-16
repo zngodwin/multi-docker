@@ -1,10 +1,10 @@
+//var format = require('pg-format');
 const keys = require("./keys");
 
 // Express App Setup
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
 
 const app = express();
 app.use(cors());
@@ -26,7 +26,7 @@ pgClient.on("connect", (client) => {
     .catch((err) => console.error(err));
 });
 
-const query = "CREATE TABLE IF NOT EXISTS words (id INTEGER, acronym VARCHAR, definition TEXT)"
+const query = "CREATE TABLE IF NOT EXISTS terms (id INTEGER, acronym VARCHAR, definition TEXT)"
 
 pgClient.connect((err, client, done) => {
   if (err) throw err;
@@ -41,9 +41,6 @@ pgClient.connect((err, client, done) => {
     }
   });
 });
-
-//import data into postgres 
-const dataimport = require('./dataimport');
 
 // Redis Client Setup
 const redis = require("redis");
@@ -61,7 +58,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/values/all", async (req, res) => {
-  const values = await pgClient.query("SELECT * from values");
+  const values = await pgClient.query("SELECT * FROM values");
 
   res.send(values.rows);
 });
@@ -85,6 +82,35 @@ app.post("/values", async (req, res) => {
 
   res.send({ working: true });
 });
+
+//import data into postgres 
+const dataimport = require('./dataimport');
+
+app.get("/terms/all", async (req, res) => {
+  let param = req.query.term;
+  //const terms = await pgClient.query("SELECT acronym, definition FROM terms WHERE acronym=$1", [param]);
+  const terms = await pgClient.query("SELECT acronym, definition FROM terms WHERE acronym=$1", [param]);
+
+  /*
+  sql = "SELECT acronym, definition FROM terms WHERE acronym = $1";
+  
+  const terms = await pgClient.query((sql, param),
+    (err, res) => {
+      if (err){
+        console.log(err.stack);
+    } else {
+        for (let row of res.rows) {
+          console.log(row);
+            }
+          }
+       })
+    */
+    console.log("received", param);
+   
+    console.log(terms);
+    res.send(terms.rows);
+  }
+);
 
 app.listen(5000, (err) => {
   console.log("Listening");
