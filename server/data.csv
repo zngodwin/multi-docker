@@ -1,3 +1,94 @@
 id ,acrovym ,definition
-1,BGP,Border Gateway Protocol (BGP) is a standardized exterior gateway protocol designed to exchange routing and reachability information between autonomous systems (AS) on the Internet
+1,BGP,Border Gateway Protocol is a standardized exterior gateway protocol designed to exchange routing and reachability information between autonomous systems on the Internet
 2,DNS,"Domanin Name Server - hierarchical and decentralized naming system used to identify computers, services, and other resources reachable through the Internet "
+3,ETM,Entanglement - Automation of Security groups
+4,SG,Security Groups
+5,Triple Sphere,Converts python into cloud formation template
+6,CFT,Cloud formation template
+7,AIB,Anything in a box
+8,MIB,Midtier in a box
+9,EIBR,Everything in a box routing
+10,ACL,Adress Control List
+11,NACL,Network Address Control List
+12,CR,Change Request
+13,PR,Pull Request
+14,DNS Dial ,How Traffic gets from EKS to the rest of the platform
+15,EKS,Elastic Kubernetes Service
+16,NCD,Network Content Delivery
+17,CLI,Command Line Interface
+18,LTIP,Load Testing in Production
+19,AD,Active Directory
+20,PC,Planning Cycle
+21,DX,Direct Connect
+22,ALB,Application Load Balancer
+23,PTG,Platform Technology Group
+24,ETG,Engineering Technology Group
+25,LDAP,Lightweight Directory Access Protocol
+26,SIE,Sony Interactive Intertainment
+27,VPC,Virtual Private Cloud
+28,WAF,Web Application Firewall
+29,NOC,Network Operations Center
+30,restack,rebuild images
+31,SGRC,Security Governance Risk and Compliance
+32,ELB,Elastic Load Balancers
+33,S2S,Server to Server
+34,NLB,Network Load Balancers
+35,NP,Navigator Platform not non-production
+36,ETM,Elastic Traffic Manager
+37,CFN,Cloud Formation Network
+38,CICD,Continuious Integration Continuious Deployment
+39,DPE,Data Platform Engineering
+40,LVDC,Las Vegas Data Center
+41,OLTP,Online Transaction Processing
+42,OLAP,Online Analytical Processing
+43,AMI,Amazon Machine Image
+44,NCO,Network Content Operations
+45,KV,Key Value
+46,STEF,Sony Technology Exchange Fair
+47,Hosted Zone,Container for records and records contain inffo about traffic route for a specific domain and sub domain 
+48,NARB,Network Architecture Review Board
+49,SLA,Service Level Agreement
+50,SSD,Single Service Deploy
+51,Cisco CSR,Cisco Cloud Service Router
+52,ENI,Elastic Network Interface
+53,EIP,Elastic IP
+54,S3,Simple Storage Solution
+55,CIDR,Classless Interdomain Routing
+56,TCP,Transport Control Protocol
+57,NAT,Network Address Translation
+58,VIF,Virtual Interface
+59,VG,Virtual Gateway
+60,VPG,Virtual Private Gateway
+61,RFC,Request for Comment
+62,AC,Additional Comments
+63,SRE,Site Reliability Engineer
+64,GSO,Global Service Operations
+65,PSN,Playstation Network
+66,CDN,Content Delivery Netwrok
+67,CGEI,Cloud Gaming Engineering Infrastructure
+68,FMA,Finance Management Applications
+69,DHCP,Dynamic Host Control Protocol
+70,CPE,Commerce Platform Engineering
+71,CCSE,Content and Customer Service Engineering
+72,DSO,Data Platform Engineering
+73,GFM-SDS,Global Fraud Management
+74,GPSA,Global Partner Strategy & Analytics
+75,EXDG,Kamaji
+76,PPM,Platform Product Management
+77,WWS,World Wide Studios
+78,RHQ,Regional Headquarters
+79,SPE,Sevice Platfrom Engineering
+80,IGW,Internet Gateway
+81,SNI,Service Name Interchanging - Each IP address can serve multiple names
+82,KPI,Key performance Indicators
+83,DoD,Definition of done
+84,SPINT,Service Provider Integration
+85,PQA,Product Quality Assurance
+86,PMGT,Product Management Approval
+87,Regcam,"Registration account management - entry point for new and existing playstation members, handles user creation and registration flows for PSN"
+88,pdx,"airport code for Portland, Oregon"
+89,SAML,Security Assertion Markup Language 
+90,STS,Security Token Service
+91,,
+92,,
+93,,

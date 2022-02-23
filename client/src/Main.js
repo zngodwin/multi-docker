@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Fib extends Component {
+class Main extends Component {
   state = {
     seenIndexes: [],
     values: {},
@@ -14,7 +14,7 @@ class Fib extends Component {
     this.fetchIndexes();
     //this.fetchTerm();
   }
-
+  //get from redis
   async fetchValues() {
     const values = await axios.get('/api/values/current');
     this.setState({ values: values.data });
@@ -26,7 +26,7 @@ class Fib extends Component {
       seenIndexes: seenIndexes.data,
     });
   }
-  //will change DNS to this.state.term later
+
   async fetchTerm(index) {
     const term = await axios.get('/api/terms/all', {
       params: {
@@ -51,6 +51,7 @@ class Fib extends Component {
     event.preventDefault();
     this.fetchTerm(this.state.index);
     
+    //post to redis
     await axios.post('/api/values', {
       index: this.state.index, 
     })
@@ -70,7 +71,7 @@ class Fib extends Component {
     catch(err){
       console.log(err);
     }
-    return ['hello'];
+    return [''];
   
   }
   
@@ -97,7 +98,7 @@ class Fib extends Component {
       <div>
         <form onSubmit={this.handleSubmit} className ='ui form'>
           <div className='field'>
-            <label>Enter your word: </label>
+            <label>Search: </label>
             <input
               value={this.state.index}
               onChange={this.onInputChange}
@@ -106,13 +107,10 @@ class Fib extends Component {
           </div>
         </form>
 
-        <h3>Indexes I have seen:</h3>
-        {this.renderSeenIndexes()}
-
-        <h3>Calculated Values:</h3>
+        <h3>Index:</h3>
         {this.renderValues()}
 
-        <h3>Acronym Lookup</h3>
+        <h3>Searh Result</h3>
         {this.renderTerm()}
       
       </div>
@@ -120,4 +118,4 @@ class Fib extends Component {
   }
 }
 
-export default Fib;
+export default Main;
