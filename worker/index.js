@@ -1,6 +1,6 @@
 const keys = require('./keys');
 const redis = require('redis');
-
+//values from 
 const redisClient = redis.createClient({
   host: keys.redisHost,
   port: keys.redisPort,

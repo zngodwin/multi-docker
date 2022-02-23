@@ -1,9 +1,9 @@
 import React from 'react';
-import pic from './me.jpg';
+import pic from './logo.jpg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import OtherPage from './OtherPage';
-import Fib from './Fib';
+import Main from './Main';
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <div className="App">
         <header className="App-header">
         <br /><br />
-          <img src ={pic} alt="pic" height={250} width={200} />
+          <img src ={pic} alt="pic" height={100} width={500} />
           <br /><br />
         </header>
         <div>
@@ -23,7 +23,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Zachary Godwin
+            About Us
           </a>
         </div>
         <div>
@@ -41,17 +41,17 @@ function App() {
         </div>
         <br /><br />
         <div>
-          <Route exact path="/" component={Fib} />
+          <Route exact path="/" component={Main} />
           <Route path="/otherpage" component={OtherPage} />
         </div>
         <br /><br />
         
-        <span>Email:&nbsp;<a href="mailto:zgodwin1@gmail.com">zgodwin1@gmail.com</a></span>
+        <span>Email:&nbsp;<a href="mailto:zavissolutions@gmail.com">zavissolutions@gmail.com</a></span>
         <br /><br />
 
       </div>
     </Router>
   );
 }
-
+//hello
 export default App;

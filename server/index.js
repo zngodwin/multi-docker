@@ -109,7 +109,7 @@ app.get("/terms/all", async (req, res) => {
     res.send(terms.rows);
   }
 );
-
+//test
 app.listen(5000, (err) => {
   console.log("Listening");
 });
