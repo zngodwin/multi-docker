@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import OtherPage from './OtherPage';
 import Main from './Main';
+import Video from './Components/Video'
 
 
 function App() {
@@ -45,9 +46,11 @@ function App() {
           <Route path="/otherpage" component={OtherPage} />
         </div>
         <br /><br />
-        
         <span>Email:&nbsp;<a href="mailto:zavissolutions@gmail.com">zavissolutions@gmail.com</a></span>
         <br /><br />
+        <div>
+        <Route exact path="/" component={Video} />
+        </div>
 
       </div>
     </Router>
