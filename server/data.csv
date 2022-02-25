@@ -88,4 +88,11 @@ id ,acrovym ,definition
 87,Regcam,Protected
 88,pdx,Protected
 89,SAML,Protected
+<<<<<<< HEAD
 90,STS,Protected
+=======
+90,STS,Protected
+91,,
+92,,
+93,,
+>>>>>>> 527dd6aac5f114b24fcda678d60b33620ecc65c4
