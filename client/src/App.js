@@ -7,7 +7,7 @@ import Main from './Main';
 import Video from './Components/Video'
 
 
-import Accordion from "./Components/Widgets/Accordion";
+//import Accordion from "./Components/Widgets/Accordion";
 import Search from "./Components/Widgets/Search";
 import Dropdown from "./Components/Widgets/Dropdown";
 import Translate from "./Components/Widgets/Translate";
