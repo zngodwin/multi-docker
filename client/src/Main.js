@@ -5,7 +5,7 @@ class Main extends Component {
   state = {
     seenIndexes: [],
     values: {},
-    index: '',
+    index: 'Database Lookup',
     term: ''
   };
 

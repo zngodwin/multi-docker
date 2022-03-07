@@ -14,7 +14,7 @@ const VideoDetail = ({video}) => {
                 <iframe id="iframe_main" title='video player'src={videoSrc} />
             </div>
             <div className ='ui segment'> 
-                <h4>Products and Services  </h4>
+                <h4>Products and Services </h4>
             </div>
         </div>
     );
