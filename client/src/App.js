@@ -59,7 +59,7 @@ function App() {
 
         <div className="widget">
           <Header/>
-         
+          <br/>
           <Routes path="/list">
             <Search />
           </Routes>
