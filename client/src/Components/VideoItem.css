@@ -3,5 +3,8 @@
     cursor: pointer;
     height: 30vmin;
     width: 45vmin;
-}
+};
 
+.search-bar{
+    width: 500px
+}

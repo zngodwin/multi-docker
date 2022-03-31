@@ -100,7 +100,6 @@ class Main extends Component {
         <form onSubmit={this.handleSubmit} className ='ui form'>
           <div className='field'>
             <div className="wide ui column center page grid">
-             
               <input
                 value={this.state.index}
                 onChange={this.onInputChange}
