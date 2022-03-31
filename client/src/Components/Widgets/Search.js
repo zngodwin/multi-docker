@@ -62,13 +62,15 @@ const Search = () => {
 
     return (
         <div>
+            <h5>Enter Search Term</h5>
             <div className="ui form">
                 <div className="field">
-                    <label>Enter Search Term</label>
+                  <div className="wide ui column center page grid">
                     <input
                     value={term}
                     onChange={e => setTerm(e.target.value)}
                     className="input" />
+                  </div>
                 </div>
             </div>
             <div className="ui celled list">

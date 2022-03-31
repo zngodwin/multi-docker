@@ -30,9 +30,9 @@ class Video extends React.Component {
             <div className='ui container'>
                 <SearchBar onFormSubmit={this.onTermSubmit}/>
                 <div className = 'ui grid'>
-                    <div className= 'ui row'>
+                    <div className= 'ui one column stackable center aligned page grid'>
                         <div className='eleven wide column'>
-                            <VideoDetail video={this.state.selectedVideo}/>
+                        <VideoDetail video={this.state.selectedVideo}/>
                         </div>
                     </div>
                 </div>
