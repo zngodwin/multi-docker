@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "./Link";
+import GoogleAuth from '../../apis/GoogleAuth';
 
 
 const Header = () => {
@@ -8,7 +9,7 @@ const Header = () => {
         <Link href='/' className='item'>
           Home
         </Link>
-        <Link href='/list' className='item'>
+        <Link href='/search' className='item'>
           Search
         </Link>
         <Link href='/dropdown' className='item'>
@@ -18,6 +19,7 @@ const Header = () => {
           Translate
         </Link>
       </div>
+
     );
 };
 

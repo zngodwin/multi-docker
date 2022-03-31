@@ -6,14 +6,18 @@ import OtherPage from './OtherPage';
 import Main from './Main';
 import Video from './Components/Video'
 
-
 //import Accordion from "./Components/Widgets/Accordion";
+
 import Search from "./Components/Widgets/Search";
 import Dropdown from "./Components/Widgets/Dropdown";
 import Translate from "./Components/Widgets/Translate";
 import Routes from "./Components/Widgets/Routes";
 import Header from "./Components/Widgets/Header";
+import GoogleAuth from "./apis/GoogleAuth";
+import Accordion from "./Components/Widgets/Accordion"
 
+//IMPORTANT ROUTE AND ROUTE(S) are not the smae ROUTE is BroswerRouter
+//Routes is custom router 
 const items = [
   {
     title: "What is React?",
@@ -47,22 +51,19 @@ const options = [
 function App() {
   const [selected, setSelected] = useState(options[0])
   return (
-
     <Router>
       <div className="App">
 
         <header className="App-header">
-        <br /><br />
+        <br />
           <img src ={pic} alt="pic" height={100} width={500} />
-          <br /><br />
+          <br />
         </header>
-
-        <div className="widget">
-          <Header/>
+        
+        <div classname='ui container'>
+          <Header />
           <br/>
-          <Routes path="/list">
-            <Search />
-          </Routes>
+          <Route path="/search" exact component={Search}/>
           <Routes path="/dropdown">
             <Dropdown 
               label="Select a color"
@@ -71,21 +72,14 @@ function App() {
               onSelectedChange={setSelected}
             />
           </Routes>
-          <Routes path="/translate">
-            <Translate />
-          </Routes> 
+          <Route exact path="/translate" component={Translate}/>
+          <Route exact path="/about" component={Accordion}/>
+      
           </div>
 
         <div>
-        <br /><br />
-          <a
-            className="App-link"
-            href="https://www.facebook.com/zachary.godwin.9"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            About Us
-          </a>
+        <br />
+          <Link to="/about">About Us</Link>
         </div>
         <div>
           <a
@@ -100,17 +94,25 @@ function App() {
         <div>
           <Link to="/otherpage">Other Page</Link>
         </div>
-        <br /><br />
+        
+        <br />
+        <GoogleAuth/>
+        <br />
+        <br />
+
         <div>
           <Route exact path="/" component={Main} />
           <Route path="/otherpage" component={OtherPage} />
         </div>
-        <br /><br />
+        <br />
         <span>Email:&nbsp;<a href="mailto:zavissolutions@gmail.com">zavissolutions@gmail.com</a></span>
-        <br /><br />
+        <br />
         <div>
         <Route exact path="/" component={Video} />
         </div>
+        <br />
+       
+
 
       </div>
     </Router>

@@ -5,7 +5,7 @@ export default () => {
   return (
     <div>
       In Progress! 
-      <Link to="/"> Go back home</Link>
+      <Link to="/home"> Go back home</Link>
     </div>
   );
 };
