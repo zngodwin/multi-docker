@@ -96,19 +96,26 @@ class Main extends Component {
   render() {
     return (
       <div>
+        <h3>Search: </h3>
         <form onSubmit={this.handleSubmit} className ='ui form'>
           <div className='field'>
-            <label>Search: </label>
-            <input
-              value={this.state.index}
-              onChange={this.onInputChange}
-            />
+            <div className="wide ui column center page grid">
+             
+              <input
+                value={this.state.index}
+                onChange={this.onInputChange}
+              />
+            </div>
+            <br/>
             <button>Submit</button>
           </div>
         </form>
+        <br/>
 
         <h3>Index:</h3>
         {this.renderValues()}
+        <br/>
+        <hr/>
 
         <h3>Searh Result</h3>
         {this.renderTerm()}

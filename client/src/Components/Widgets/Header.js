@@ -5,7 +5,7 @@ import GoogleAuth from '../../apis/GoogleAuth';
 
 const Header = () => {
     return (
-      <div className="ui secondar pointing menu">
+      <div className="ui secondary pointing menu">
         <Link href='/' className='item'>
           Home
         </Link>
@@ -18,6 +18,7 @@ const Header = () => {
         <Link href='/translate' className='item'>
           Translate
         </Link>
+       
       </div>
 
     );
