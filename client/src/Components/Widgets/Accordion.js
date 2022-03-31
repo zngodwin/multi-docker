@@ -17,6 +17,7 @@ const Accordion = ({ items }) => {
                 className={`title ${active}`}
                 onClick={() => onTitleClick(index)}
             >
+                Hello
                 <i className="dropdown icon"></i>
                 {item.title}
             </div>
