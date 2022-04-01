@@ -3,6 +3,7 @@ import pic from './logo.jpg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import OtherPage from './OtherPage';
+import TestPage from './TestPage';
 import Main from './Main';
 import Video from './Components/Video'
 
@@ -14,10 +15,12 @@ import Translate from "./Components/Widgets/Translate";
 import Routes from "./Components/Widgets/Routes";
 import Header from "./Components/Widgets/Header";
 import GoogleAuth from "./apis/GoogleAuth";
-import Accordion from "./Components/Widgets/Accordion"
+import Accordion from "./Components/Widgets/Accordion";
+import PayBill from "./Components/Widgets/PayBill";
 
 //IMPORTANT ROUTE AND ROUTE(S) are not the smae ROUTE is BroswerRouter
 //Routes is custom router 
+
 const items = [
   {
     title: "What is React?",
@@ -74,6 +77,7 @@ function App() {
           </Routes>
           <Route exact path="/translate" component={Translate}/>
           <Route exact path="/about" component={Accordion}/>
+          <Route exact path="/payment" component={PayBill}/>
       
           </div>
 
@@ -94,6 +98,9 @@ function App() {
         <div>
           <Link to="/otherpage">Other Page</Link>
         </div>
+        <div>
+          <Link to="/testpage">Test Page</Link>
+        </div>
         
         <br />
         <GoogleAuth/>
@@ -103,6 +110,7 @@ function App() {
         <div>
           <Route exact path="/" component={Main} />
           <Route path="/otherpage" component={OtherPage} />
+          <Route path="/testpage" component={TestPage} />
         </div>
         <br />
         <span>Email:&nbsp;<a href="mailto:zavissolutions@gmail.com">zavissolutions@gmail.com</a></span>
