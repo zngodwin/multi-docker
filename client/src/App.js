@@ -15,7 +15,8 @@ import Translate from "./Components/Widgets/Translate";
 import Routes from "./Components/Widgets/Routes";
 import Header from "./Components/Widgets/Header";
 import GoogleAuth from "./apis/GoogleAuth";
-import Accordion from "./Components/Widgets/Accordion"
+import Accordion from "./Components/Widgets/Accordion";
+import PayBill from "./Components/Widgets/PayBill";
 
 //IMPORTANT ROUTE AND ROUTE(S) are not the smae ROUTE is BroswerRouter
 //Routes is custom router 
@@ -76,6 +77,7 @@ function App() {
           </Routes>
           <Route exact path="/translate" component={Translate}/>
           <Route exact path="/about" component={Accordion}/>
+          <Route exact path="/payment" component={PayBill}/>
       
           </div>
 

@@ -7,7 +7,7 @@ export default () => {
       <Link to="/home"> Go back home</Link>
       <br/>
       <br/>
-      <form class="ui form">
+      <form class="ui form container">
         <div class="field">
           <label>First Name</label>
           <input type="text" name="first-name" placeholder="First Name"/>
