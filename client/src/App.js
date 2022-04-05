@@ -63,7 +63,7 @@ function App() {
           <br />
         </header>
         
-        <div classname='ui container'>
+        <div className='ui container'>
           <Header />
           <br/>
           <Route path="/search" exact component={Search}/>
