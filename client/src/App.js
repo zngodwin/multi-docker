@@ -49,6 +49,8 @@ function App() {
         <span>Email:&nbsp;<a href="mailto:zgodwin1@gmail.com">zgodwin1@gmail.com</a></span>
         <br /><br />
 
+        <script type="text/javascript" src="https://form.jotform.com/jsform/220895908786071"></script>
+      
       </div>
     </Router>
   );
