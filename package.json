@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/zngodwin/multi-docker/issues"
   },
-  "homepage": "https://github.com/zngodwin/multi-docker#readme"
+  "homepage": "https://github.com/zngodwin/multi-docker#readme",
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-redux": "^7.2.8",
+    "redux": "^4.1.2"
+  }
 }
