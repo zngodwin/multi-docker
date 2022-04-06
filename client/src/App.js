@@ -52,6 +52,7 @@ function App() {
         <script type="text/javascript" src="https://form.jotform.com/jsform/220895908786071"></script>
       
       </div>
+      <script type="text/javascript" src="https://form.jotform.com/jsform/220895908786071"></script>
     </Router>
   );
 }
