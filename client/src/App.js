@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import pic from './logo.jpg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import OtherPage from './OtherPage';
+import Legal from './Legal';
 import TestPage from './TestPage';
 import Main from './Main';
 import Video from './Components/Video'
@@ -59,7 +59,7 @@ function App() {
 
         <header className="App-header">
         <br />
-          <img src ={pic} alt="pic" height={100} width={500} />
+          <img src ={pic} alt="pic" height={90} width={500} />
           <br />
         </header>
         
@@ -96,7 +96,7 @@ function App() {
           </a>
         </div>
         <div>
-          <Link to="/otherpage">Other Page</Link>
+          <Link to="/legal">Terms and Conditions</Link>
         </div>
         <div>
           <Link to="/testpage">Test Page</Link>
@@ -109,7 +109,7 @@ function App() {
 
         <div>
           <Route exact path="/" component={Main} />
-          <Route path="/otherpage" component={OtherPage} />
+          <Route path="/legal" component={Legal} />
           <Route path="/testpage" component={TestPage} />
         </div>
         <br />

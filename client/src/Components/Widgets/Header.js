@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "./Link";
-import PayBill from "./PayBill";
 //import GoogleAuth from '../../apis/GoogleAuth';
 
 
