@@ -1,129 +1,129 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import pic from './logo.jpg';
+import './Main.css';
+import { Router as Router, Route, Link } from 'react-router-dom';
+import Legal from './Legal';
+import TestPage from './TestPage';
+import Database from './Database';
+import Video from './Components/Video'
 
-//extends creates a class that is a child of another class
+import Search from "./Components/Widgets/Search";
+import Dropdown from "./Components/Widgets/Dropdown";
+import Translate from "./Components/Widgets/Translate";
+import Routes from "./Components/Widgets/Routes";
+import Header from "./Components/Widgets/Header";
+import Accordion from "./Components/Widgets/Accordion";
+import PayBill from "./Components/Widgets/PayBill";
+import history from "./history";
+import Login from "./Components/Login";
+import GoogleAuth from "./apis/GoogleAuth";
 
-class Main extends Component {
-  state = {
-    seenIndexes: [],
-    values: {},
-    index: 'Database Lookup',
-    term: ''
-  };
+//IMPORTANT ROUTE AND ROUTE(S) are not the smae ROUTE is BroswerRouter
+//Routes is custom router 
 
-  componentDidMount() {
-    this.fetchValues();
-    this.fetchIndexes();
-    //this.fetchTerm();
-  }
-  //get from redis
-  async fetchValues() {
-    const values = await axios.get('/api/values/current');
-    this.setState({ values: values.data });
-  }
-
-  async fetchIndexes() {
-    const seenIndexes = await axios.get('/api/values/all');
-    this.setState({
-      seenIndexes: seenIndexes.data,
-    });
-  }
-
-  async fetchTerm(index) {
-    const term = await axios.get('/api/terms/all', {
-      params: {
-        term: index
-      }
-    });
-    console.log('send', index);
-    console.log('received', term.data);
-    this.setState({ term: term.data });
-
-  };
+const items = [
+    {
+      title: "What is React?",
+      content: "React is a front end javascript framework",
+    },
+    {
+      title: "Why use React?",
+      content: "React is a favorite JS library among engineers",
+    },
+    {
+      title: "How do you use React?",
+      content: "You use React by creating components",
+    },
+  ];
   
-  onInputChange = (event) => {
-    event.preventDefault();
-    this.setState({ index: event.target.value });
-    this.setState({ term: event.target.value });
-    //console.log(this.state.index);
-  }; 
-
-  handleSubmit = async (event) => {
-    //DO NOT REMOVE event.preventDefault or wont work
-    event.preventDefault();
-    this.fetchTerm(this.state.index);
-    
-    //post to redis
-    await axios.post('/api/values', {
-      index: this.state.index, 
-    })
-  };
-
-  renderTerm(){
-    
-    try{
-      if(typeof this.state.term === 'object'){
-        console.log(this.state.term[0].acronym);
-        return <div> {this.state.term[0].acronym} : {this.state.term[0].definition}</div>
-      } else 
-      {
-        //pass 
-      }
-    }
-    catch(err){
-      console.log(err);
-    }
-    return [''];
+  const options = [
+    {
+      label: "The Color Red",
+      value: "red",
+    },
+    {
+      label: "The Color Green",
+      value: "green",
+    },
+    {
+      label: "A Shade of Blue",
+      value: "blue",
+    },
+  ];
   
-  }
-  
-  renderSeenIndexes() {
-    return this.state.seenIndexes.map(({ number }) => number).join(', ');
-  }
-  
-  renderValues() {
-    const entries = [];
-
-    for (let key in this.state.values) {
-      entries.push(
-        <div key={key}>
-          For index {key} I calculated {this.state.values[key]}
-        </div>
-      );
-    }
-   
-    return entries;
-  }
-  
-  render() {
+  function Main() {
+    const [selected, setSelected] = useState(options[0])
     return (
-      <div>
-        <h3>Search: </h3>
-        <form onSubmit={this.handleSubmit} className ='ui form'>
-          <div className='field'>
-            <div className="wide ui column center page grid">
-              <input
-                value={this.state.index}
-                onChange={this.onInputChange}
-              />
-            </div>
+      <Router history={history}>
+        <div className="Main">
+          
+          <header className="Main-header">
+          <br />
+            <img src ={pic} alt="pic" height={90} width={500} />
+            <br />
+          </header>
+          
+          <div className='ui container'>
+            <Header />
             <br/>
-            <button>Submit</button>
+            <Route path="/search" exact component={Search}/>
+            <Routes path="/dropdown">
+              <Dropdown 
+                label="Select a color"
+                options={options}
+                selected={selected}
+                onSelectedChange={setSelected}
+              />
+            </Routes>
+            <Route exact path="/translate" component={Translate}/>
+            <Route exact path="/about" component={Accordion}/>
+            <Route exact path="/payment" component={PayBill}/>
+            
+            </div>
+  
+          <div>
+          <br />
+            <Link to="/about">About Us</Link>
           </div>
-        </form>
-        <br/>
-
-        <h3>Index:</h3>
-        {this.renderValues()}
-        <br/>
-        <hr/>
-
-        <h3>Searh Result</h3>
-        {this.renderTerm()}
-      
-      </div>
+          <div>
+            <a
+              className="Main-link"
+              href="https://github.com/zngodwin"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Git Hub
+            </a>
+          </div>
+          <div>
+            <Link to="/legal">Terms and Conditions</Link>
+          </div>
+          <div>
+            <Link to="/testpage">Test Page</Link>
+          </div>
+          
+          <br />
+            <GoogleAuth/>
+          <br />
+          <br />
+  
+          <div>
+            <Route exact path="/" component={Database} />
+            <Route path="/login" component={Login}/>
+            <Route path="/legal" component={Legal} />
+            <Route path="/testpage" component={TestPage} />
+          </div>
+          <br />
+          <span>Email:&nbsp;<a href="mailto:zavissolutions@gmail.com">zavissolutions@gmail.com</a></span>
+          <br />
+          <div>
+          <Route exact path="/" component={Video} />
+          </div>
+          <br />
+  
+        </div>
+      </Router>
     );
   }
-}
 
-export default Main;
+export default Main; 

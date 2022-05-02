@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "./Link";
 //import GoogleAuth from '../../apis/GoogleAuth';
-
+//need to replace login with an action to change to home
 
 const Header = () => {
     return (
