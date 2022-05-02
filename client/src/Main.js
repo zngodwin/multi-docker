@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+//extends creates a class that is a child of another class
+
 class Main extends Component {
   state = {
     seenIndexes: [],

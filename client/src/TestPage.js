@@ -25,7 +25,7 @@ class TestPage extends React.Component {
           This Is A Test Page
           <br/>
           <br/>
-          <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form">
+          <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form container">
             <Field name="title" component={this.renderInput} label='Enter Title' />
             <Field 
               name="description" 

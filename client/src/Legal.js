@@ -1,22 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Field, reduxForm } from 'redux-form' 
+import { Field, formValues, reduxForm } from 'redux-form' 
 
 class Legal extends React.Component {
-  renderInput({ input, label }) {
+  
+  renderError({ error, touched}){
+    if (touched && error ){
+      return(
+        <div className="ui error memssage"> 
+          <div className="header">{error}</div>
+        </div>
+      );
+    }
+  };
+
+  renderInput = ({ input, label, meta }) => {
+    const className = `field ${meta.error && meta.touched ? 'error' : ''}` 
     //onChange={formProps.input.onChange}
     //value={formProps.input.value}
     return (
-      <div className="field">
+      <div className={className}>
         <label>{label}</label>
         <input {...input}/>
+        {this.renderError(meta)}
       </div>
     );
-  }
+  };
 
   onSubmit(formValues){
-    console.log(formValues)
-  }
+    console.log(formValues);
+  };
 
   render() {
     return (
@@ -26,14 +39,14 @@ class Legal extends React.Component {
         <br/>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form container">
           <Field 
-            name="First Name" 
+            name="fName" 
             component={this.renderInput} 
             label='First Name' 
             placeholder="First Name" 
           />
           
           <Field 
-            name="Last Name" 
+            name="lName" 
             component={this.renderInput} 
             label="Last Name"
             placeholder='Last Name'
@@ -51,6 +64,20 @@ class Legal extends React.Component {
   };
 }
 
+//when property in validate matches title in Field redux-from passes it to component
+const validate = (formValues) => {
+  const errors = {};
+
+  if (!formValues.fName){
+    errors.fName = "You must enter in your first name";
+  }
+  if (!formValues.lName){
+    errors.lName = 'You must enter your last name';
+  }
+  return errors;
+};
+
 export default reduxForm({
-  form: 'legal'
+  form: 'legal',
+  validate
 })(Legal);

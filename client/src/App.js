@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import pic from './logo.jpg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Router as Router, Route, Link } from 'react-router-dom';
 import Legal from './Legal';
 import TestPage from './TestPage';
 import Main from './Main';
@@ -14,9 +14,9 @@ import Dropdown from "./Components/Widgets/Dropdown";
 import Translate from "./Components/Widgets/Translate";
 import Routes from "./Components/Widgets/Routes";
 import Header from "./Components/Widgets/Header";
-import GoogleAuth from "./apis/GoogleAuth";
 import Accordion from "./Components/Widgets/Accordion";
 import PayBill from "./Components/Widgets/PayBill";
+import history from "./history";
 
 //IMPORTANT ROUTE AND ROUTE(S) are not the smae ROUTE is BroswerRouter
 //Routes is custom router 
@@ -54,9 +54,9 @@ const options = [
 function App() {
   const [selected, setSelected] = useState(options[0])
   return (
-    <Router>
+    <Router history={history}>
       <div className="App">
-
+        
         <header className="App-header">
         <br />
           <img src ={pic} alt="pic" height={90} width={500} />
@@ -103,7 +103,7 @@ function App() {
         </div>
         
         <br />
-        <GoogleAuth/>
+        
         <br />
         <br />
 
@@ -119,8 +119,6 @@ function App() {
         <Route exact path="/" component={Video} />
         </div>
         <br />
-       
-
 
       </div>
     </Router>
