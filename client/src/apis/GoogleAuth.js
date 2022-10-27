@@ -4,16 +4,19 @@ import { signIn, signOut } from '../actions';
 
 class GoogleAuth extends React.Component {
   componentDidMount() {
+    //arrow function is only called after client auth2 lib has been successfully loaded
     window.gapi.load('client:auth2', () => {
       window.gapi.client
         .init({
           clientId:
             '920083295828-69r6c2u2dk56lt76uqkr7o0rpohlpc9q.apps.googleusercontent.com',
-          scope: 'email'
+          scope: 'email',
+          plugin_name: "streamy"
         })
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance();
 
+          //auth.isSignedIn.get() returns boolean true or false
           this.onAuthChange(this.auth.isSignedIn.get());
           this.auth.isSignedIn.listen(this.onAuthChange);
         });
@@ -48,13 +51,14 @@ class GoogleAuth extends React.Component {
       );
     } else {
       return (
-        <button onClick={this.onSignInClick} className="ui red google button">
+        <button onClick={this.onSignInClick} className="ui green google button">
           <i className="google icon" />
           Sign In with Google
         </button>
       );
     }
   }
+
 
   render() {
     return <div>{this.renderAuthButton()}</div>;

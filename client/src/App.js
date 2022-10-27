@@ -103,7 +103,7 @@ function App() {
         </div>
         
         <br />
-        <GoogleAuth/>
+    
         <br />
         <br />
 
