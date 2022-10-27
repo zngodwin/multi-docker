@@ -4,6 +4,7 @@ import { signIn, signOut } from '../actions';
 
 class GoogleAuth extends React.Component {
   componentDidMount() {
+    //Testing change managemnet
     //arrow function is only called after client auth2 lib has been successfully loaded
     window.gapi.load('client:auth2', () => {
       window.gapi.client
